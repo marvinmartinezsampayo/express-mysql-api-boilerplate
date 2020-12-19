@@ -5,7 +5,9 @@ const morgan = require('morgan');
 
 require('dotenv').config();
 
-const api = require('./Entity/Tipo_Calificacion');
+const tipo = require('./Entity/Tipo_Calificacion');
+const comandante = require('./Entity/Comandantes');
+
 const middlewares = require('./middlewares');
 
 const app = express();
@@ -39,7 +41,8 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/Gestion', api);
+app.use('/Gestion/Tipo_Calificacion', tipo);
+app.use('/Gestion/Comandante', comandante);
 
 app.use(middlewares.errorHandler);
 app.use(middlewares.notFound);
