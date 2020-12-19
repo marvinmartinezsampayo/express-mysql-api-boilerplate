@@ -4,7 +4,7 @@ const router = express.Router();
 const dbConnection = require('../../db');
 
 router.get('/', (req, res) => {
-  dbConnection.query('SELECT table_name FROM information_schema.tables;', (err, data) => {
+  dbConnection.query('select * from Tipo_Calificacion;', (err, data) => {
     if (err) {
       console.log('The: ', err);
       res.status(500).json({
@@ -12,9 +12,7 @@ router.get('/', (req, res) => {
       });
     }
     else {
-      res.status(200).json({
-        availableTables: data,
-      })
+      res.status(201).json(data)
     }
   });
 });
